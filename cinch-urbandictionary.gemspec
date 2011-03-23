@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Lee Jarvis"]
   s.email       = ["lee@jarvis.co"]
-  s.homepage    = "http://github.com/injekt/cinch-urbandictionary"
+  s.homepage    = "http://github.com/cinchrb/cinch-urbandictionary"
   s.summary     = %q{A Cinch plugin for fetching the top result of an Urban Dictionary query}
   s.description = s.summary
 
