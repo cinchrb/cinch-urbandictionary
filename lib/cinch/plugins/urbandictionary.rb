@@ -15,10 +15,9 @@ module Cinch::Plugins
     private
     def search(query)
       url = URI.encode "http://www.urbandictionary.com/define.php?term=#{query}"
-      Nokogiri.HTML(open url).at_css('.definition').text.strip
+      Nokogiri.HTML(open url).at_css('.meaning').text.gsub!(/\r/, ' ').strip
     rescue => e
       e.message
     end
-
   end
 end
