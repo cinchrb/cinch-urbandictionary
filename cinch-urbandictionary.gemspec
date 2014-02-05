@@ -12,5 +12,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency(%q<cinch>, [">= 1.1.2"])
-  s.add_dependency(%q<nokogiri>, [">= 1.4.4"])
+  s.add_dependency(%q<httparty>)
 end
