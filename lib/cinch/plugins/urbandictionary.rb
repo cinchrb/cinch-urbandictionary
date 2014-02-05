@@ -1,3 +1,4 @@
+require 'cinch'
 require 'httparty'
 
 module Cinch::Plugins
