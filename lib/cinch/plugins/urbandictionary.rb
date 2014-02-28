@@ -1,21 +1,23 @@
 require 'cinch'
+require 'cgi'
+require 'json'
 require 'open-uri'
-require 'nokogiri'
 
 module Cinch::Plugins
   class UrbanDictionary
     include Cinch::Plugin
 
-    match /urban (.*)/
-
+    match(/urban (.*)/)
     def execute(m, query)
       m.reply search(query)
     end
 
     private
     def search(query)
-      url = URI.encode "http://www.urbandictionary.com/define.php?term=#{query}"
-      Nokogiri.HTML(open url).at_css('.meaning').text.gsub!(/\r/, ' ').strip
+      uri = "http://api.urbandictionary.com/v0/define?term=%s" % [CGI.escape(query)]
+      open(uri) do |f|
+        JSON.parse(f.read)['list'][0]['definition'].gsub(/(\r\n)+/, ' ')
+      end
     rescue => e
       exception(e)
       "An exception occured"
