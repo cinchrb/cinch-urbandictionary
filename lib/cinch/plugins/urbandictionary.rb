@@ -16,7 +16,12 @@ module Cinch::Plugins
     def search(query)
       uri = "http://api.urbandictionary.com/v0/define?term=%s" % [CGI.escape(query)]
       open(uri) do |f|
-        JSON.parse(f.read)['list'][0]['definition'].gsub(/(\r\n)+/, ' ')
+        obj = JSON.parse(f.read)
+        if obj['list'].empty?
+          "No result"
+        else
+          obj['list'][0]['definition'].gsub(/(\r\n)+/, ' ')
+        end
       end
     rescue => e
       exception(e)
