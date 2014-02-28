@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "cinch-urbandictionary"
-  s.version     = "0.10.0"
+  s.version     = "0.10.1"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Lee Jarvis"]
   s.email       = ["lee@jarvis.co"]
